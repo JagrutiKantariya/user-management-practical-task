@@ -16,7 +16,7 @@ const addressSchema = new mongoose.Schema({
     pincode:{
         type:Number,
         require: true,
-        min: 9999, max: 999999
+        min: 1111, max: 999999
     },
     city:{
         type:String,
@@ -32,6 +32,8 @@ const addressSchema = new mongoose.Schema({
         default:'home'        
     }
 },{timestamps:true,versionKey:false})
+
+addressSchema.index({city:1})
 
 const userModel = mongoose.model('address',addressSchema)
 

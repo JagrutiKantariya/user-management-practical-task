@@ -29,6 +29,9 @@ const userSchema = new mongoose.Schema({
     ] // Array of ObjectIDs referencing Address documents
 },{timestamps:true,versionKey:false})
 
+userSchema.index({firstName:1})
+userSchema.index({lastName:1})
+userSchema.index({email:1})
 const userModel = mongoose.model('users',userSchema)
 
 module.exports = userModel

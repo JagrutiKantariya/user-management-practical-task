@@ -42,8 +42,7 @@ const uniqueMobileNumber = async (value, _id = null) => {
 };
 const userController = {
     createUser: async (req, res) => {
-        try {
-            const { firstName, lastName, email, mobileNumber, birthDate, address } = req.body
+        const { firstName, lastName, email, mobileNumber, birthDate, address } = req.body
             const input = {
                 firstName: firstName,
                 lastName: lastName,
@@ -51,6 +50,8 @@ const userController = {
                 mobileNumber: mobileNumber,
                 birthDate: birthDate
             }
+        try {
+            
             const userData = await userModel.create(input)
             if (userData) {
                 for (const addr of address) {
@@ -73,7 +74,9 @@ const userController = {
 
         }
         catch (error) {
-            console.log(error)
+            // if error occur delete inserted record
+            const deletedUserData = await userModel.findOneAndDelete({email:input?.email}) // delete user data
+            await addressModel.deleteMany({userId: deletedUserData?._id}) // delete addresses
             return res.status(INTERNAL_SERVER_ERROR).json({
                 status: false,
                 message: error?.message
@@ -167,7 +170,7 @@ const userController = {
             })
         }
         catch (error) {
-            console.log(error)
+            console.log("here errors",error)
             return res.status(INTERNAL_SERVER_ERROR).json({
                 status: false,
                 message: error?.message
@@ -227,7 +230,7 @@ const userController = {
 
         }
         catch (error) {
-            console.log(error)
+            console.log("here error",error)
             return res.status(INTERNAL_SERVER_ERROR).json({
                 status: false,
                 message: error?.message

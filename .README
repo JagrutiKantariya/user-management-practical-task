@@ -1,0 +1,72 @@
+First setup project 
+=> run npm install
+=> npm start
+ APIS :
+ 
+ Create User: 
+ localhost:7000/users/addUser
+ request body =
+ {
+    "firstName": "Christy",
+    "lastName": "Baumbach",
+    "email": "Jaiden_Donnelly@hotmail.com",
+    "mobileNumber": "5974171357",
+    "address": [
+      {
+        "addressLine1": "7044 Beatty Mill",
+        "addressLine2": "Apt. 376",
+        "city": "DeSoto",
+        "state": "Tennessee",
+        "addressType":"home","pincode": 80957
+      },
+      {
+        "addressLine1": "879 Chapel Hill",
+        "addressLine2": "Apt. 993",
+        "city": "Bergnaumborough",
+        "state": "New York",
+        "addressType":"home","pincode": 13020
+      },
+      {
+        "addressLine1": "527 Gerda Islands",
+        "addressLine2": "Suite 223",
+        "city": "Brekkeworth",
+        "state": "Mississippi",
+        "addressType":"home","pincode": 2908
+      }
+    ]
+  }
+
+Update User :
+ localhost:7000/users/updateUser/665611a5331051f83c140d3a
+
+   {
+    "firstName": "Krishna",
+    "lastName": "Patel",
+    "email":"krishna@gmail.com",
+    "mobileNumber": "8965231478",
+    "address": [
+      {
+        "_id":"665611a5331051f83c140d3c",
+        "addressLine1": "Mota mandir Road, Tarsadi",
+        "addressLine2": "Tarsadi",
+        "city": "kosamba",
+        "state": "Gujarat",
+        "pincode": 394050,
+        "addressType":"home"
+      },
+    
+      {
+        "_id":"66561527853420e244cb154b",
+        "addressLine1": "silver Plaza",
+        "city": "kosamba",
+        "state": "Gujarat",
+        "pincode": 394120,
+        "addressType":"office"
+      }
+    ],
+    "birthDate":"1998-04-03"
+  }
+
+get User :
+ localhost:7000/users/getUsers?search=gmail&minAge=14&maxAge=26&city=surat
+
